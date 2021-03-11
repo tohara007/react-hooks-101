@@ -2,16 +2,13 @@ import React, { useState } from 'react'
 
 const App = props => {
 
-  const [name, setName] = useState(props.name)
-  const [price, setPrice] = useState(props.price)
+  const [state, setState] = useState(props)
+  const { name, price } = state
 
-  const increment = () => setPrice(price + 1)
-  const decrement = () => setPrice(price - 1)
-  const reset = () => {
-    setPrice(props.price)
-    setName(props.name)
-  }
-  const changeName = (value) => setName(value)
+  const increment = () => setState({...state, price: price + 1})
+  const decrement = () => setState({...state, price: price - 1})
+  const reset = () => setState(props)
+  const changeName = (value) => setState({...state, name: value})
 
   return (
     <>

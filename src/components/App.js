@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Event from './Event'
 import reducer from '../reducers'
 
 const App = () => {
@@ -13,18 +14,11 @@ const App = () => {
   const addEvent = e => {
     // 画面のリロードを防止するため
     e.preventDefault()
-    dispatch(
-      {
-        type: 'CREATE_EVENT',
-        title,
-        body
-      }
-    )
+    dispatch({ type: 'CREATE_EVENT', title, body })
     setTitle('')
     setBody('')
   }
 
-  console.log({state })
   return (
     <div className="container-fluid">
       <h4>イベントフォーム</h4>
@@ -51,7 +45,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-
+        { state.map((event, idx) => (<Event key={idx} event={event} dispatch={dispatch}/>))}
         </tbody>
       </table>
     </div>

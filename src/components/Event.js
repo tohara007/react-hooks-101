@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { DELETE_EVENT } from '../actions'
+import AppContext from '../contexts/AppContext'
 
 // Eventコンポーネント自体が、既にkey={idx}の定義されているため、
 // このコンポーネントの中身でkey={idx}を付与する必要はない。
-const Event = ({ event, dispatch }) => {
+const Event = ({ event }) => {
+    const { dispatch } = useContext(AppContext)
     const id = event.id
     const handleClickDeleteButton = () => {
         const result = window.confirm(`id=${id}のイベントを本当に削除しても良さげですかい？？`)

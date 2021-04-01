@@ -1,12 +1,10 @@
-import React, { /* useReducer,*/ useState } from 'react'
-// useReducerもreducerも不要のため、コメントアウト
-// import reducer from '../reducers'
+import React, { useContext, useState } from 'react'
 
 import { CREATE_EVENT, DELETE_ALL_EVENT } from '../actions'
+import AppContext from '../contexts/AppContext'
 
-const EventForm = ({ state, dispatch }) => {
-    // App.jsからstateとdispatchがpropsとして渡されるため、個別でのuseReducerは不要
-    // const [state, dispatch] = useReducer(reducer, [])
+const EventForm = () => {
+    const { state, dispatch } = useContext(AppContext)
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
 
